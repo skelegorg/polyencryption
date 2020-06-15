@@ -1,0 +1,9 @@
+MANIFEST.in
+README.txt
+setup.py
+polyencryption/__init__.py
+polyencryption.egg-info/PKG-INFO
+polyencryption.egg-info/SOURCES.txt
+polyencryption.egg-info/dependency_links.txt
+polyencryption.egg-info/requires.txt
+polyencryption.egg-info/top_level.txt
