@@ -12,9 +12,8 @@ setup(
     name='polyencryption',
     version='0.0.1',
     description='a simple encryption algorithm that encrypts .txt files using a polyalphabetic cypher. NOTE- this software is not intended for or should be used for security purposes',
-    long_description=open('README.txt').read() + '\n\n' +
-    open('CHANGELOG.txt').read(),
-    url='',
+    long_description=open('README.txt').read(),
+    url='https://github.com/skelegorg/polyencryption',
     author='Andrew C',
     author_email='cumminand@outlook.com',
     license='MIT',
