@@ -1,5 +1,13 @@
 from setuptools import setup, find_packages
 
+
+readme = open("README.md", "r")
+changes = open("CHANGELOG.txt", "r")
+long_description = readme.read() + '\n\n' + changes.read()
+readme.close()
+changes.close()
+
+
 classifiers = [
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Education',
@@ -12,7 +20,7 @@ setup(
     name='polyencryption',
     version='0.0.1',
     description='a simple encryption algorithm that encrypts .txt files using a polyalphabetic cypher. NOTE- this software is not intended for or should be used for security purposes',
-    long_description=open('README.txt').read(),
+    long_description=long_description,
     url='https://github.com/skelegorg/polyencryption',
     author='Andrew C',
     author_email='cumminand@outlook.com',

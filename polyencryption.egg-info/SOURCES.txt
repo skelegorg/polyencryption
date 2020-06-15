@@ -1,5 +1,7 @@
+CHANGELOG.txt
+LICENSE.txt
 MANIFEST.in
-README.txt
+README.md
 setup.py
 polyencryption/__init__.py
 polyencryption.egg-info/PKG-INFO
