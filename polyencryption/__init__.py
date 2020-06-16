@@ -22,6 +22,11 @@ def encrypt(fileToEncrypt):
         # if no key file exists, create a key file and start the function over
         regenerateKey()
         encrypt(fileToEncrypt)
+    # figure out how many digits to cycle through
+    keyCounter = 0
+    with open("key.txt", "r") as key:
+        for line in key:
+            keyCounter += 1
     # if the keyfile exists, open it up
     if(fileExists == True):
         keyFile = open("key.txt", "r")
@@ -65,7 +70,7 @@ def encrypt(fileToEncrypt):
                 encryptedLine += enCharS
                 # Change the character being read by the polyNumAdd
                 keySwitcher += 1
-                if (keySwitcher == 10):
+                if (keySwitcher == keyCounter):
                     keySwitcher = 0
             # replace the unencrypted line of the array with the encrypted line
             encryptArray[elemLoopHelper] = encryptedLine
@@ -87,6 +92,11 @@ def decrypt(fileToDecrypt):
         keyFile = open("key.txt", "r")
     except FileNotFoundError:
         raise FileNotFoundError("no key file was found in the directory")
+    # figure out how many digits to cycle through
+    keyCounter = 0
+    with open("key.txt", "r") as key:
+        for line in key:
+            keyCounter += 1
     # open the file to decrypt
     decryptFile = open(fileToDecrypt, "r")
     # if the key file was not empty, start the decrypting process
