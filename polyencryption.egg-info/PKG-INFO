@@ -1,7 +1,7 @@
 Metadata-Version: 1.1
 Name: polyencryption
-Version: 0.0.9
-Summary: a simple encryption algorithm that encrypts .txt files using a polyalphabetic cypher. NOTE- this software is not intended for or should be used for security purposes
+Version: 1.0.1
+Summary: a simple encryption algorithm that encrypts .txt files using a polyalphabetic cypher. NOTE- this software is not intended for nor should be used for any security purposes
 Home-page: https://github.com/skelegorg/polyencryption
 Author: Andrew C
 Author-email: cumminand@outlook.com
@@ -14,6 +14,8 @@ Description: # polyencryption
         ==========
         0.0.1 (6/14/2020) - First release
         0.0.2 (6/14/2020) - Made changes that actually allowed the module to be installed
+        0.0.3 through 0.0.9 - Me trying to make my first module work
+        1.0.1 (6/15.2020) - Fixed the set- 10 cycle through the keyfile when the key may be longer
 Keywords: encryption
 Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
