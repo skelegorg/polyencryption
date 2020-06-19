@@ -1,5 +1,6 @@
 # this file contains the polyalphabetic encryption/decryption algorithms
 import secrets
+import string
 
 
 def regenerateKey(length=10):
@@ -7,7 +8,8 @@ def regenerateKey(length=10):
     keyFile = open("key.txt", "w")
     loopHelper = 0
     while(loopHelper < length):
-        keyFile.write(str(secrets.randbelow(6)) + '\n')
+        keyFile.write(str(secrets.randbelow(6)) + ' ' +
+                      str(secrets.randbelow(2)) + '\n')
         loopHelper += 1
 
 
@@ -48,12 +50,18 @@ def encrypt(fileToEncrypt):
         encryptFile.close()
         elemLoopHelper = 0
         keyArray = []
+        addsubArray = []
         keySwitcher = 0
         # Populate the keyArray with all the digits of the key
         with open("key.txt", "r") as keyFile:
             for line in keyFile:
                 keyLine = line.strip()
-                keyArray.append(keyLine)
+                keyRefined = keyLine.split(" ")
+                addsubappend = keyRefined[1]
+                if(addsubappend.endswith("\n") == True):
+                    addsubappend = addsubappend - '\n'
+                addsubArray.append(addsubappend)
+                keyArray.append(keyRefined[0])
         # for each line in the password file
         for element in encryptArray:
             # Reset/create a string which holds the current encrypted line
@@ -63,14 +71,17 @@ def encrypt(fileToEncrypt):
                 # Figure out which element of the key is being added
                 polyAdd = int(keyArray[keySwitcher])
                 # Go through key values and add them to each
-                enChar = ord(char) + polyAdd
+                if(addsubArray[keySwitcher] == "0"):
+                    enChar = ord(char) + polyAdd
+                elif(addsubArray[keySwitcher] == "1"):
+                    enChar = ord(char) - polyAdd
                 # Convert enChar to enCharS
                 enCharS = chr(enChar)
                 # Add each newly encrypted character to the encryptedLine string
                 encryptedLine += enCharS
                 # Change the character being read by the polyNumAdd
                 keySwitcher += 1
-                if (keySwitcher == keyCounter):
+                if (keySwitcher >= keyCounter):
                     keySwitcher = 0
             # replace the unencrypted line of the array with the encrypted line
             encryptArray[elemLoopHelper] = encryptedLine
@@ -115,12 +126,18 @@ def decrypt(fileToDecrypt):
         decryptFile.close()
         elemLoopHelper = 0
         keyArray = []
+        addsubArray = []
         keySwitcher = 0
         # Populate the keyArray with all the digits of the key
         with open("key.txt", "r") as keyFile:
             for line in keyFile:
                 keyLine = line.strip()
-                keyArray.append(keyLine)
+                keyRefined = keyLine.split(" ")
+                addsubappend = keyRefined[1]
+                if(addsubappend.endswith("\n") == True):
+                    addsubappend = addsubappend - '\n'
+                addsubArray.append(addsubappend)
+                keyArray.append(keyRefined[0])
         # for each line in the password file
         for element in decryptArray:
             # Reset/create a string which holds the current encrypted line
@@ -130,14 +147,17 @@ def decrypt(fileToDecrypt):
                 # Figure out which element of the key is being added
                 polyAdd = int(keyArray[keySwitcher])
                 # Go through key values and add them to each
-                deChar = ord(char) - polyAdd
+                if(addsubArray[keySwitcher] == "0"):
+                    deChar = ord(char) - polyAdd
+                elif(addsubArray[keySwitcher] == "1"):
+                    deChar = ord(char) + polyAdd
                 # Convert deChar to deCharS
                 deCharS = chr(deChar)
                 # Add each newly decrypted character to the decryptedLine string
                 decryptedLine += deCharS
                 # Change the character being read by the polyNumAdd
                 keySwitcher += 1
-                if (keySwitcher == 10):
+                if (keySwitcher >= keyCounter):
                     keySwitcher = 0
             decryptArray[elemLoopHelper] = decryptedLine
             # Change the slot of the array that is being encrypted

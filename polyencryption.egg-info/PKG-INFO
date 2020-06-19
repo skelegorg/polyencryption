@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: polyencryption
-Version: 1.0.1
+Version: 1.0.7
 Summary: a simple encryption algorithm that encrypts .txt files using a polyalphabetic cypher. NOTE- this software is not intended for nor should be used for any security purposes
 Home-page: https://github.com/skelegorg/polyencryption
 Author: Andrew C

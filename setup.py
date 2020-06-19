@@ -18,7 +18,7 @@ classifiers = [
 
 setup(
     name='polyencryption',
-    version='1.0.1',
+    version='1.1.0',
     description='a simple encryption algorithm that encrypts .txt files using a polyalphabetic cypher. NOTE- this software is not intended for nor should be used for any security purposes',
     long_description=long_description,
     url='https://github.com/skelegorg/polyencryption',
@@ -28,5 +28,5 @@ setup(
     classifiers=classifiers,
     keywords='encryption',
     packages=find_packages(),
-    install_requires=['secrets']
+    install_requires=['']
 )
